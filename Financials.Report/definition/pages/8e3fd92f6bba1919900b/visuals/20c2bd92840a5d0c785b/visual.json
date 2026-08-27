@@ -111,20 +111,6 @@
               },
               "queryRef": "Basic Measures.Actual 'M",
               "nativeQueryRef": "Actual 'M"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Basic Measures"
-                    }
-                  },
-                  "Property": "Diff %"
-                }
-              },
-              "queryRef": "Basic Measures.Diff %",
-              "nativeQueryRef": "Diff %"
             }
           ]
         }
@@ -286,20 +272,6 @@
               }
             },
             "Property": "Actual 'M"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "75b00afad246969b98b3",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Basic Measures"
-              }
-            },
-            "Property": "Diff %"
           }
         },
         "type": "Advanced"

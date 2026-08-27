@@ -63,6 +63,9 @@ table 'Basic Measures'
 			```
 		lineageTag: 0dc43306-9095-42e3-9c41-267bf600843e
 
+	measure 'Test Message' = "Test"
+		lineageTag: 35b6e106-0c9d-49c0-afa3-34537d8e755a
+
 	partition 'Basic Measures' = m
 		mode: import
 		source =

@@ -1,0 +1,33 @@
+table Grouping
+	lineageTag: 2ddc851d-591a-4196-adf3-9bf01117a07a
+
+	column Segment
+		dataType: string
+		lineageTag: 47529326-94ff-4204-9963-4319be4a7e08
+		summarizeBy: none
+		sourceColumn: Segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: 67dd85cf-c245-48d8-ad0a-3706ae1b9e43
+		summarizeBy: none
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Grouping = m
+		mode: import
+		source =
+				let
+				  Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WKitW8EksLlGITE0sUtJRMlKK1QELOpWmpKeWAEUMlWJjAQ==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Segment = _t, Index = _t]),
+				  #"Changed column type" = Table.TransformColumnTypes(Source, {{"Segment", type text}, {"Index", Int64.Type}}, "en-US")
+				in
+				  #"Changed column type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

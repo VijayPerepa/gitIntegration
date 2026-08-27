@@ -1,0 +1,97 @@
+table Dates
+	lineageTag: aeb9266c-da63-4c2a-af26-6404160528b1
+
+	column Date
+		formatString: General Date
+		lineageTag: 68b6495b-a474-48a1-aa1b-12047ac75076
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 30efbfc8-3235-428e-86ae-53087f07495f
+			defaultHierarchy: LocalDateTable_5885b609-aaf8-49ee-a2c7-f202452b8600.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		lineageTag: 8d3fc124-a9cc-4b58-bb31-84aae9d84efe
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month No'
+		formatString: 0
+		lineageTag: 12bd3311-1f76-423f-a5d8-fa74d04172cd
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Month No]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		lineageTag: 6c7a6b7b-a050-4556-b4eb-e0e4e0163b4e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		formatString: 0
+		lineageTag: 9ee45c2e-4bfd-4f6b-8c5f-860fe55bb442
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Month'
+		formatString: 0
+		lineageTag: 32ab33d9-af08-4a96-ba0a-bf18e8f7c552
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Fiscal Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fqtr
+		lineageTag: c9cf6002-8f4d-40ce-8136-8e503e2a422f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Fqtr]
+
+		annotation SummarizationSetBy = Automatic
+
+	column FY
+		lineageTag: 64d02588-49a9-4566-92c7-627c3ed11f4e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [FY]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dates = calculated
+		mode: import
+		source = ```
+				
+				GENERATE(
+				    CALENDARAUTO(3),
+				    VAR D = [Date]
+				    VAR MN = MONTH(D) VAR M = FORMAT(d,"MMM") 
+				    VAR QN = QUARTER(D) var Q = "Q" & QN
+				    Var FMN = IF(MN<4,mn+9,mn-3) var FQ = "Q" & ROUNDUP(fmn/3,0)
+				    var Y = YEAR(D)
+				    VAR FYR = IF(MN<4, "FY " & Y-1 & "-" & RIGHT(y,2),
+				                       "FY " & Y & "-" & RIGHT(Y+1,2))
+				RETURN
+				ROW("Month",M, "Month No",MN, "Quarter",Q,"Year",Y,"Fiscal Month",FMN,
+				"Fqtr",FQ,"FY",FYR))
+				
+				```
+
+	annotation PBI_Id = 4fc3ee6e3fc3442a830ec40d0ed0cdef
+

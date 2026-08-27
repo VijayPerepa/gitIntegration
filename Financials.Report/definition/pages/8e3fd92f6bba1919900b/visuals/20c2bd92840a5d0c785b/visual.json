@@ -1,0 +1,309 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "20c2bd92840a5d0c785b",
+  "position": {
+    "x": 0,
+    "y": 177.77777777777777,
+    "z": 1,
+    "height": 902.22222222222217,
+    "width": 1271.1111111111111,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dates"
+                    }
+                  },
+                  "Property": "Fqtr"
+                }
+              },
+              "queryRef": "Dates.Fqtr",
+              "nativeQueryRef": "Fqtr",
+              "active": true
+            }
+          ]
+        },
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Financial_Categories"
+                        }
+                      },
+                      "Hierarchy": "Category Hierarchy"
+                    }
+                  },
+                  "Level": "Category"
+                }
+              },
+              "queryRef": "Financial_Categories.Category Hierarchy.Category",
+              "nativeQueryRef": "Category Hierarchy Category",
+              "active": true
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Financial_Categories"
+                        }
+                      },
+                      "Hierarchy": "Category Hierarchy"
+                    }
+                  },
+                  "Level": "Sub Category"
+                }
+              },
+              "queryRef": "Financial_Categories.Category Hierarchy.Sub Category",
+              "nativeQueryRef": "Category Hierarchy Sub Category",
+              "active": true
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Financial_Categories"
+                        }
+                      },
+                      "Hierarchy": "Category Hierarchy"
+                    }
+                  },
+                  "Level": "Financial Statement List"
+                }
+              },
+              "queryRef": "Financial_Categories.Category Hierarchy.Financial Statement List",
+              "nativeQueryRef": "Category Hierarchy Financial Statement List",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Basic Measures"
+                    }
+                  },
+                  "Property": "Actual 'M"
+                }
+              },
+              "queryRef": "Basic Measures.Actual 'M",
+              "nativeQueryRef": "Actual 'M"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Basic Measures"
+                    }
+                  },
+                  "Property": "Diff %"
+                }
+              },
+              "queryRef": "Basic Measures.Diff %",
+              "nativeQueryRef": "Diff %"
+            }
+          ]
+        }
+      }
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "Financial_Categories.Category Hierarchy.Category"
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Financial_Categories.Category Hierarchy.Sub Category"
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Financial_Categories.Category Hierarchy.Financial Statement List"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {}
+      }
+    ],
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "layout": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Tabular'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "22D"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Basic Measures"
+                    }
+                  },
+                  "Property": "Title"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "deca225f4fa96922d58b",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Financial_Categories"
+                  }
+                },
+                "Hierarchy": "Category Hierarchy"
+              }
+            },
+            "Level": "Category"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "58888450194266df186f",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Financial_Categories"
+                  }
+                },
+                "Hierarchy": "Category Hierarchy"
+              }
+            },
+            "Level": "Sub Category"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "e81ba64b7b3f58377048",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Financial_Categories"
+                  }
+                },
+                "Hierarchy": "Category Hierarchy"
+              }
+            },
+            "Level": "Financial Statement List"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "c6344d187992086dc835",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dates"
+              }
+            },
+            "Property": "Fqtr"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "a039b4a07f1a3b921494",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Basic Measures"
+              }
+            },
+            "Property": "Actual 'M"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "75b00afad246969b98b3",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Basic Measures"
+              }
+            },
+            "Property": "Diff %"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

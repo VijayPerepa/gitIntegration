@@ -1,0 +1,33 @@
+table Users
+	lineageTag: 2b673350-ff6c-4a7d-bc95-761724839fcb
+
+	column Entity
+		dataType: string
+		lineageTag: b3e43193-5f91-4aa0-adf2-88be77d1f637
+		summarizeBy: none
+		sourceColumn: Entity
+
+		annotation SummarizationSetBy = Automatic
+
+	column User
+		dataType: string
+		lineageTag: 589cf14e-9b5e-4371-9db8-199187146929
+		summarizeBy: none
+		sourceColumn: User
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Users = m
+		mode: import
+		source =
+				let
+				  Source = Excel.Workbook(File.Contents("C:\Users\VijayPerepa\Desktop\Financial Reporting Example Dummy Data (1) (1).xlsx"), null, true),
+				  #"Navigation 1" = Source{[Item = "Users", Kind = "Table"]}[Data],
+				  #"Changed column type" = Table.TransformColumnTypes(#"Navigation 1", {{"Entity", type text}, {"User", type text}}, "en-US")
+				in
+				  #"Changed column type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

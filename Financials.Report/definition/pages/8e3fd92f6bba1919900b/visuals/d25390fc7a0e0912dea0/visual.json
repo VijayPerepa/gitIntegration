@@ -1,0 +1,107 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "d25390fc7a0e0912dea0",
+  "position": {
+    "x": 1337.9118578200639,
+    "y": 177.01603041927,
+    "z": 3,
+    "height": 644.25601768873844,
+    "width": 545.45637280356459,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "pieChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Financial_Data"
+                    }
+                  },
+                  "Property": "Entity"
+                }
+              },
+              "queryRef": "Financial_Data.Entity",
+              "nativeQueryRef": "Entity",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Basic Measures"
+                    }
+                  },
+                  "Property": "Actual 'M"
+                }
+              },
+              "queryRef": "Basic Measures.Actual 'M",
+              "nativeQueryRef": "Actual 'M"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Basic Measures"
+                  }
+                },
+                "Property": "Actual 'M"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "8277e6ac6e254dfd5a1a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Financial_Data"
+              }
+            },
+            "Property": "Entity"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "e81806eee5e4d0dee2b0",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Basic Measures"
+              }
+            },
+            "Property": "Actual 'M"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}
